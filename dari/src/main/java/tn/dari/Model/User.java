@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 
+import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 @Entity
@@ -120,6 +121,7 @@ public class User implements Serializable{
     public void setNotLocked(boolean isNotLocked) {
         this.isNotLocked = isNotLocked;
     }
+
 
 
 }

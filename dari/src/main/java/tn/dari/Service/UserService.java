@@ -22,6 +22,7 @@ public class UserService {
 public User getUser(Long id){
     Optional<User> user = userRepo.findById(id);
     if(user.isPresent()){
+        user.get().setPassword(null);
         return user.get();
     }else{
         System.out.println("not found");
@@ -31,7 +32,12 @@ public User getUser(Long id){
 
 
 public List<User> findAll(){
-        return userRepo.findAll();
+    List<User> x = userRepo.findAll();
+    for (User a : x) {
+        a.setPassword(null);
+    }
+
+    return x;
 }
 
 public ResponseEntity<User> register(User user)
