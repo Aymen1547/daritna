@@ -44,7 +44,7 @@ public ResponseEntity<User> register(User user)
             throws Exception {
 
             User newUser = new User( null,user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail(),user.getPassword() ,
-            user.getDate(), LocalDate.now(), LocalDate.now(), user.getRole(), user.isNotLocked());
+            user.getJoinDate(), LocalDate.now(), LocalDate.now(), user.getRole(), user.isNotLocked());
 
             userRepo.save(newUser);
             return new ResponseEntity<User>( newUser,HttpStatus.OK);
@@ -65,10 +65,10 @@ public ResponseEntity<User> register(User user)
     public ResponseEntity<User> updateUser(User user)
             throws Exception {
                 System.out.print(user.getUserId());
-            User oldUser = this.getUser(user.getUserId());
+            User oldUser = this.getUser(user.getId());
 
              oldUser = new User(user.getUserId(),user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail(),oldUser.getPassword() ,
-             user.getDate(), LocalDate.now(), LocalDate.now(), user.getRole(), true);
+             user.getJoinDate(), LocalDate.now(), LocalDate.now(), user.getRole(), true);
 
             userRepo.save(oldUser);
             return new ResponseEntity<User>( oldUser,HttpStatus.OK);
