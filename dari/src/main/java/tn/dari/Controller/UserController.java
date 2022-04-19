@@ -21,36 +21,6 @@ import tn.dari.Service.UserService;
 @RestController
 @RequestMapping(path = {"/user"})
 public class UserController {
-@Autowired
-UserService userService;
 
-@PostMapping("/register")
-public @ResponseBody ResponseEntity<User> register(@RequestBody User userData) throws Exception {
-   return userService.register( userData);
-    
-}
-
-@PostMapping("/changepassword/{id}") 
-public @ResponseBody ResponseEntity<String> updatePassword(@PathVariable long id,@RequestBody String password) throws Exception {
-    return userService.updatePassword( id,password);
-     
- }
-
- @PutMapping("/update") 
-public @ResponseBody ResponseEntity<User> update(@RequestBody User userData) throws Exception {
-    return userService.updateUser( userData);
-     
- }
-
-@GetMapping("/get")
-public @ResponseBody List<User> find() throws Exception {
-   return userService.findAll( );
-}
-
-@DeleteMapping("/delete/{id}")
-public ResponseEntity<String> delete(@PathVariable long id){
-
-    return userService.deleteUser(id);
-}
 
 }
