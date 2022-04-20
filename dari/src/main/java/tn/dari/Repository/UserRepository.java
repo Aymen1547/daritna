@@ -6,14 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import tn.dari.Model.User;
 
+public interface UserRepository extends JpaRepository<User, Long> {
 
+    User findUserByUsername(String username);
 
-
-@Repository
-public interface UserRepository  extends JpaRepository<User, Long> {
-
-    User findByUsername(String username);
-    User findByEmail(String email);
-
-    
+    User findUserByEmail(String email);
 }

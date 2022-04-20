@@ -1,18 +1,20 @@
 package tn.dari.Service;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
-import tn.dari.Repository.UserRepository;
 import tn.dari.Model.User;
+import tn.dari.Exception.domain.EmailExistException;
+import tn.dari.Exception.domain.UserNotFoundException;
+import tn.dari.Exception.domain.UsernameExistException;
 
-@Service
-public class UserService {
+import java.util.List;
 
+public interface UserService {
+
+    User register(String firstName, String lastName, String username, String email) throws UserNotFoundException, UsernameExistException, EmailExistException;
+
+    List<User> getUsers();
+
+    User findUserByUsername(String username);
+
+    User findUserByEmail(String email);
 }
+
