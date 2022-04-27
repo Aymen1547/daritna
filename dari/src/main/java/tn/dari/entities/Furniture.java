@@ -9,7 +9,7 @@ public class Furniture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idFur;
 
     private String name;
     private double price;
@@ -17,12 +17,22 @@ public class Furniture {
     private String description;
     private LocalDate postdate;
 
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
+    }
+
+    String category_id;
+
     public Furniture() {
 
     }
 
-    public Furniture(Long id, String name, double price, String picture, String description, LocalDate postdate) {
-        this.id = id;
+    public Furniture(Long idFur, String name, double price, String picture, String description, LocalDate postdate) {
+        this.idFur = idFur;
         this.name = name;
         this.price = price;
         this.picture = picture;
@@ -30,12 +40,12 @@ public class Furniture {
         this.postdate = postdate;
     }
 
-        public Long getId() {
-        return id;
+    public Long getIdFur() {
+        return idFur;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdFur(Long idFur) {
+        this.idFur = idFur;
     }
 
     public String getName() {

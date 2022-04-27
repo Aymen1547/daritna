@@ -1,8 +1,11 @@
 package tn.dari.services;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.dari.entities.CategoryFurniture;
 import tn.dari.entities.Furniture;
+import tn.dari.repositories.CategoryRepository;
 import tn.dari.repositories.FurnitureRepository;
 
 import java.util.List;
@@ -13,6 +16,8 @@ public class FurnitureService {
 
     @Autowired
     private FurnitureRepository furniturerepository;
+    @Autowired
+    CategoryRepository cateRepo;
 
     public Furniture saveFurniture(Furniture furniture) {
         return furniturerepository.save(furniture);
@@ -40,13 +45,29 @@ public class FurnitureService {
     }
 
     public Furniture updateFurniture(Furniture furniture) {
-        Furniture existingFurniture = furniturerepository.findById(furniture.getId()).orElse(null);
+        Furniture existingFurniture = furniturerepository.findById(furniture.getIdFur()).orElse(null);
         existingFurniture.setName(furniture.getName());
         existingFurniture.setPrice(furniture.getPrice());
         existingFurniture.setPicture(furniture.getPicture());
         existingFurniture.setDescription(furniture.getDescription());
         existingFurniture.setPostdate(furniture.getPostdate());
         return furniturerepository.save(existingFurniture);
+    }
+
+
+    public List<Furniture>getAllFurniture(){
+        return furniturerepository.findAll();
+    }
+    public List<Furniture>getFurnitureByCategory(String furniture_id){
+        return furniturerepository.getByCategoryId(furniture_id);
+    }
+
+    public List<CategoryFurniture>getAllCategory(){
+        return cateRepo.findAll();
+    }
+
+    public Furniture getFurnitureById(long furnitureId) throws Exception {
+        return furniturerepository.findById(furnitureId).orElseThrow(() ->new Exception("furniture is not found"));
     }
 
 }
