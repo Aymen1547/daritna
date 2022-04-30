@@ -2,10 +2,7 @@ package tn.dari.Exception;
 
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import tn.dari.Model.HttpResponse;
-import tn.dari.Exception.domain.EmailExistException;
-import tn.dari.Exception.domain.EmailNotFoundException;
-import tn.dari.Exception.domain.UserNotFoundException;
-import tn.dari.Exception.domain.UsernameExistException;
+import tn.dari.Exception.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -102,6 +99,12 @@ public class ExceptionHandling implements ErrorController {
         return createHttpResponse(INTERNAL_SERVER_ERROR, INTERNAL_SERVER_ERROR_MSG);
     }
 
+    @ExceptionHandler(NotAnImageFileException.class)
+    public ResponseEntity<HttpResponse> notAnImageFileException(NotAnImageFileException exception) {
+        LOGGER.error(exception.getMessage());
+        return createHttpResponse(BAD_REQUEST, exception.getMessage());
+    }
+
     @ExceptionHandler(NoResultException.class)
     public ResponseEntity<HttpResponse> notFoundException(NoResultException exception) {
         LOGGER.error(exception.getMessage());
@@ -116,7 +119,7 @@ public class ExceptionHandling implements ErrorController {
 
     private ResponseEntity<HttpResponse> createHttpResponse(HttpStatus httpStatus, String message) {
         return new ResponseEntity<>(new HttpResponse(httpStatus.value(), httpStatus,
-                httpStatus.getReasonPhrase().toUpperCase(), message.toUpperCase()), httpStatus);
+                httpStatus.getReasonPhrase().toUpperCase(), message), httpStatus);
     }
 
     @RequestMapping(ERROR_PATH)
