@@ -1,34 +1,65 @@
-import { HttpClient, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/models/User';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user';
+import { CustomHttpRespone } from 'src/app/models/custom-http-response';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class UserService {
   private host = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
-  public getUsers() {
-    return this.http.get<User[]>(`${this.host}/user/get`, {observe: 'response'});
+  public getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.host}/user/list`);
   }
 
-  public addUser(user:User): Observable<User> {
-    return this.http.post<User>(`${this.host}/user/register`, user);
+  public addUser(formData: FormData): Observable<User> {
+    return this.http.post<User>(`${this.host}/user/add`, formData);
   }
 
-  public updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.host}/user/update`, user);
+  public updateUser(formData: FormData): Observable<User> {
+    return this.http.post<User>(`${this.host}/user/update`, formData);
   }
 
-  public changePassword(id:number,changepassword: String) {
-    return this.http.post(`${this.host}/user/changepassword/${id}`, changepassword, {responseType: 'text'});
+  public resetPassword(email: string): Observable<CustomHttpRespone> {
+    return this.http.get<CustomHttpRespone>(`${this.host}/user/resetpassword/${email}`);
   }
 
-  public deleteUser(user: number) {
-    return this.http.delete<number>(`${this.host}/user/delete/${user}`);
+  public updateProfileImage(formData: FormData): Observable<HttpEvent<User>> {
+    return this.http.post<User>(`${this.host}/user/updateProfileImage`, formData,
+    {reportProgress: true,
+      observe: 'events'
+    });
   }
+
+  public deleteUser(username: string): Observable<CustomHttpRespone> {
+    return this.http.delete<CustomHttpRespone>(`${this.host}/user/delete/${username}`);
+  }
+
+  public addUsersToLocalCache(users: User[]): void {
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+
+  public getUsersFromLocalCache(): User[] {
+       // return JSON.parse(localStorage.getItem('users'));
+        return JSON.parse(localStorage.getItem('users')!);
+
+  }
+
+  public createUserFormDate(loggedInUsername: string, user: User, profileImage: File): FormData {
+    const formData = new FormData();
+    formData.append('currentUsername', loggedInUsername);
+    formData.append('firstName', user.firstName);
+    formData.append('lastName', user.lastName);
+    formData.append('username', user.username);
+    formData.append('email', user.email);
+    formData.append('role', user.role);
+    formData.append('profileImage', profileImage);
+    formData.append('isActive', JSON.stringify(user.active));
+    formData.append('isNonLocked', JSON.stringify(user.notLocked));
+    return formData;
+  }
+
 }

@@ -4,23 +4,36 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { routes } from './Routing';
-import { UserDashboardComponent } from './components/usersManagement/user-dashboard/user-dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationService } from './services/userServices/authentication.service';
+import { UserService } from './services/userServices/user.service';
+import { NotificationService } from './services/userServices/notification.service';
+import { RegisterComponent } from './components/usersManagement/register/register.component';
+import { LoginComponent } from './components/usersManagement/login/login.component';
+import { UserComponent } from './components/usersManagement/user/user.component';
+import { NotificationModule } from './notification/notification.module';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { AuthenticationGuard } from './guard/authentication.guard';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserDashboardComponent,
+    RegisterComponent,
+    LoginComponent,
+    UserComponent,
     
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NotificationModule
   ],
-  providers: [],
+  providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
