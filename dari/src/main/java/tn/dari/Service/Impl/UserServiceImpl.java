@@ -219,7 +219,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     private String generatePassword() {
-        return RandomStringUtils.randomAlphanumeric(10);
+        return "root";
     }
 
     private String generateUserId() {
