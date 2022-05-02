@@ -14,16 +14,14 @@ export class AuthenticationGuard implements CanActivate {
     private notificationService: NotificationService) {}
 
 canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-return this.isUserLoggedIn();
+if(this.authenticationService.isUserLoggedIn()){
+  return true;
+}else{
+  this.router.navigate(['/login']);
+  this.notificationService.notify(NotificationType.ERROR, `You need to log in to access this page`);
+  return false;
+  }
 }
 
-private isUserLoggedIn(): boolean {
-if (this.authenticationService.isUserLoggedIn()) {
-return true;
-}
-this.router.navigate(['/login']);
-this.notificationService.notify(NotificationType.ERROR, `You need to log in to access this page`);
-return false;
-}
 
 }

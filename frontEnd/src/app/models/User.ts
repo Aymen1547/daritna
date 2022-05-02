@@ -7,6 +7,7 @@ export class User {
     public lastLoginDate: Date;
     public lastLoginDateDisplay: Date;
     public joinDate: Date;
+    public password: string;
     public profileImageUrl: string;
     public active: boolean;
     public notLocked: boolean;
@@ -18,6 +19,7 @@ export class User {
     this.firstName = '';
     this.lastName = '';
     this.username = '';
+    this.password = '';
     this.email = '';
     this.lastLoginDate = null;
     this.lastLoginDateDisplay = null;

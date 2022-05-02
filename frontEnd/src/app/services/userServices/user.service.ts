@@ -20,6 +20,7 @@ export class UserService {
   }
 
   public updateUser(formData: FormData): Observable<User> {
+
     return this.http.post<User>(`${this.host}/user/update`, formData);
   }
 
@@ -48,7 +49,23 @@ export class UserService {
 
   }
 
+  
   public createUserFormDate(loggedInUsername: string, user: User, profileImage: File): FormData {
+    const formData = new FormData();
+    formData.append('currentUsername', loggedInUsername);
+    formData.append('firstName', user.firstName);
+    formData.append('lastName', user.lastName);
+    formData.append('username', user.username);
+    formData.append('email', user.email);
+    formData.append('password',user.password);
+    formData.append('role', user.role);
+    formData.append('profileImage', profileImage);
+    formData.append('isActive', JSON.stringify(user.active));
+    formData.append('isNonLocked', JSON.stringify(user.notLocked));
+    return formData;
+  }
+
+  public createUserFormDate2(loggedInUsername: string, user: User, profileImage: File): FormData {
     const formData = new FormData();
     formData.append('currentUsername', loggedInUsername);
     formData.append('firstName', user.firstName);

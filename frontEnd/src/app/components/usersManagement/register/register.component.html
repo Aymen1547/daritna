@@ -36,6 +36,25 @@
                 <input type="text" class="form-control" name="email" placeholder="Email" required ngModel #emailInput="ngModel">
               </div>
               <span class="help-block" *ngIf="emailInput.invalid && emailInput.touched" style="color:red;">Please enter an email.</span>
+                            <div class="input-group mb-2">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="password" class="form-control" name="password" placeholder="password" required ngModel #passwordInput="ngModel">
+              </div>
+              <span class="help-block" *ngIf="passwordInput.invalid && passwordInput.touched" style="color:red;">Please enter a password.</span>
+                            <div class="input-group mb-2">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <select class="form-control" name="role" required ngModel #roleInput="ngModel">
+                  <option value="" selected disabled hidden>Choose role</option>
+                  <option value="ROLE_USER">buyer</option>
+                  <option value="ROLE_USER2">seller</option>
+                </select>
+              </div>
+              <span class="help-block" *ngIf="roleInput.invalid && roleInput.touched" style="color:red;">Please enter a role.</span>
+          
           <div class="d-flex justify-content-center mt-3 login_container">
             <button [disabled]="registerForm.invalid || showLoading" type="submit" name="button" class="btn login_btn">
               <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;

@@ -15,6 +15,8 @@ import { UserComponent } from './components/usersManagement/user/user.component'
 import { NotificationModule } from './notification/notification.module';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { AuthenticationGuard } from './guard/authentication.guard';
     RegisterComponent,
     LoginComponent,
     UserComponent,
+    NavbarComponent,
+    HomeComponent,
     
   ],
   imports: [

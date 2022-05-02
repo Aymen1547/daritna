@@ -102,7 +102,7 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   public onUpdateUser(): void {
-    const formData = this.userService.createUserFormDate(this.currentUsername, this.editUser, this.profileImage);
+    const formData = this.userService.createUserFormDate2(this.currentUsername, this.editUser, this.profileImage);
     this.subscriptions.push(
       this.userService.updateUser(formData).subscribe(
         (response: User) => {
@@ -182,12 +182,6 @@ export class UserComponent implements OnInit, OnDestroy {
 
   public updateProfileImage(): void {
     this.clickButton('profile-image-input');
-  }
-
-  public onLogOut(): void {
-    this.authenticationService.logOut();
-    this.router.navigate(['/login']);
-    this.sendNotification(NotificationType.SUCCESS, `You've been successfully logged out`);
   }
 
   public onResetPassword(emailForm: NgForm): void {
