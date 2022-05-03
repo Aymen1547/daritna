@@ -17,6 +17,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     UserComponent,
     NavbarComponent,
     HomeComponent,
+    AdminBarComponent,
     
   ],
   imports: [

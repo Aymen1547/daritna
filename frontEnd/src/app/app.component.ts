@@ -10,8 +10,15 @@ export class AppComponent {
   title = 'frontEnd';
 constructor(private authService:AuthenticationService){}
 
-  public isAuth(){
 
-    return this.authService.isUserLoggedIn();
+
+  public isAdmin(){
+    if (!this.authService.isUserLoggedIn()) {
+      return false
+    } else {
+      return this.authService.isAdmin;
+    }
+    
+    
   }
 }

@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Role } from 'src/app/enum/role';
 
 
 @Injectable({providedIn: 'root'})
@@ -64,5 +65,14 @@ export class AuthenticationService {
       return false;
     }
   }
+
+  private getUserRole(): string {
+    return this.getUserFromLocalCache().role;
+  }
+
+  public get isAdmin(): boolean {
+    return this.getUserRole() === Role.ADMIN || this.getUserRole() === Role.SUPER_ADMIN;
+  }
+
 }
 
