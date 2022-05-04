@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from './services/userServices/authentication.service';
 
 @Component({
@@ -8,7 +9,13 @@ import { AuthenticationService } from './services/userServices/authentication.se
 })
 export class AppComponent {
   title = 'frontEnd';
-constructor(private authService:AuthenticationService){}
+  public term : string
+  public isTokenThere : boolean
+constructor(private router: Router, private authService:AuthenticationService){
+
+  console.log("Token:  " + localStorage.getItem('token'));
+  this.isTokenThere = localStorage.getItem('token') != null
+}
 
 
 
@@ -19,6 +26,9 @@ constructor(private authService:AuthenticationService){}
       return this.authService.isAdmin;
     }
     
-    
   }
+  public search() {
+    this.router.navigate(["/shop", this.term]).then(() => window.location.reload())
 }
+}
+

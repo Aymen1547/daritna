@@ -181,4 +181,13 @@ public class User implements Serializable {
     public void setNotLocked(boolean notLocked) {
         isNotLocked = notLocked;
     }
+
+
+    //
+    @JsonManagedReference
+    @OneToMany(mappedBy = "pk.user", cascade = CascadeType.ALL)
+    private List<CartItem> cartItems = new ArrayList<>();
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
 }

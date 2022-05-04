@@ -268,4 +268,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
     }
 
+
+    //
+
+
+    public User getUser (Long id) {
+        return userRepository.findById(id).orElseThrow(() ->
+                new UserNotFoundException("User by id " + id + " was not found."));
+    }
+
+
+
 }

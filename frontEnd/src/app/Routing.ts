@@ -1,10 +1,13 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/usersManagement/login/login.component';
 import { RegisterComponent } from './components/usersManagement/register/register.component';
 import { UserComponent } from './components/usersManagement/user/user.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
-
+import { CartComponent } from './components/cart/cart.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 export const routes: Routes = [
     { path: '', pathMatch:'full', redirectTo:'home' },
@@ -12,5 +15,17 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'user/management', component: UserComponent, canActivate: [AuthenticationGuard] },
     { path: 'home', component: HomeComponent },
+    {path: 'shop', component: ProductListComponent},
+    {path: 'shop/:term', component: ProductListComponent},
+    {path: 'shop/products/:id', component: ProductDetailComponent},
+    {path: 'cart', component: CartComponent}
+    
 ];
 
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { 
+    constructor (router : Router) {}
+}

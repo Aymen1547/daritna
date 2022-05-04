@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms'
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AppRoutingModule } from './Routing';
 import { AppComponent } from './app.component';
 import { routes } from './Routing';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationService } from './services/userServices/authentication.service';
 import { UserService } from './services/userServices/user.service';
 import { NotificationService } from './services/userServices/notification.service';
@@ -18,7 +17,11 @@ import { AuthenticationGuard } from './guard/authentication.guard';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
-
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CartComponent } from './components/cart/cart.component';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
     NavbarComponent,
     HomeComponent,
     AdminBarComponent,
+    ProductListComponent,
+    ProductDetailComponent,
+    CartComponent
     
   ],
   imports: [
@@ -36,7 +42,10 @@ import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NotificationModule
+    NotificationModule,
+    BrowserModule,
+ //   FontAwesomeModule,
+    FormsModule,
   ],
   providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
