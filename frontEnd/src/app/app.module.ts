@@ -8,13 +8,23 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SuccessComponent } from './components/success/success.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CancelComponent } from './components/cancel/cancel.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     ProductDetailComponent,
-    CartComponent
+    CheckoutComponent,
+    CancelComponent,
+    SuccessComponent,
+    CartComponent,
    
   ],
   imports: [
@@ -22,7 +32,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
