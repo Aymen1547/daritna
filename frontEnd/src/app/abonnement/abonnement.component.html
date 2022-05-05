@@ -1,0 +1,260 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="add-new">
+      <button
+        type="button"
+        class="btn btn-info"
+        data-toggle="modal"
+        data-target="#addModal"
+      >
+        add
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table
+        class="table table-bordered hover table-dark ">
+        <thead class="thead-default">
+          <tr>
+            <th>id</th>
+            <th>duree</th>
+            <th>prix</th>
+            <th>type</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let abonnement of abonnements | async">
+            <td>{{ abonnement.id }}</td>
+            <td>{{ abonnement.duree }}</td>
+            <td>{{ abonnement.prix }}</td>
+            <td>{{ abonnement.type }}</td>
+            <td>
+              <div class="btn-group">
+                <button
+                  class="btn btn-secondary fa fa-pencil"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#updateModal"
+                  (click)="setAbonnement(abonnement)"
+                ></button>
+                <button
+                  class="btn btn-secondary fa fa-trash"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#deleteModal"
+                  (click)="setAbonnement(abonnement)"
+                ></button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="!abonnements">
+            <td>
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Add Modal -->
+<div
+class="modal fade"
+id="addModal"
+tabindex="-1"
+role="dialog"
+aria-labelledby="addModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h1 class="modal-title" id="addScheduleModalLabel">abonnement</h1>
+  </div>
+
+  <div class="modal-body">
+    <form #addForm="ngForm" (submit)="onAddUser(addForm)">
+      <input type="text" id="id" value="0" hidden />
+      <div class="form-group">
+        <label for="number">duree</label>
+        <input
+          type="text"
+          ngModel
+          name="duree"
+          class="form-control"
+          id="duree"
+          placeholder="insert titre"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="number">prix</label>
+        <input
+          type="text"
+          ngModel
+          name="prix"
+          class="form-control"
+          id="prix"
+          placeholder="prix"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">type</label>
+        <input
+          type="text"
+          ngModel
+          name="type"
+          class="form-control"
+          id="type"
+          placeholder=" type"
+          required
+        />
+      </div> 
+      
+      
+     
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="add-schedule-form"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          onclick="abonnement.reload(true)"
+        >
+          cancel
+        </button>
+        <button
+          [disabled]="addForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+          onclick="abonnement.reload(true)"
+        >
+          add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<!-- update Modal -->
+<div
+class="modal fade"
+id="updateModal"
+tabindex="-1"
+role="dialog"
+aria-labelledby="updateModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title" id="updateScheduleModalLabel">update abonnement</h1>
+    </div>
+
+    <div class="modal-body">
+      <form #editForm="ngForm" (submit)="onUpdate(editForm)">
+        <input type="text" name="id" value="{{this.abonnement.id}}" hidden />
+        <div class="form-group">
+          <label for="number">duree</label>
+          <input
+            type="number"
+            ngModel
+            name="duree"
+            class="form-control"
+            value="{{this.abonnement.duree}}"
+            placeholder="duree"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number">prix</label>
+          <input
+            type="number"
+            ngModel
+            name="lieu"
+            value="{{this.abonnement.prix}}"
+            class="form-control"
+            placeholder="prix"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">type</label>
+          <input
+            type="text"
+            ngModel
+            name="type"
+            value="{{this.abonnement.type}}"
+            class="form-control"
+            placeholder="type"
+            required
+          />
+        </div>  
+         
+        
+        
+        <div class="modal-footer">
+          <button
+            type="button"
+            id="add-schedule-form"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            onclick="abonnement.reload(true)"
+          >
+            cancel
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            onclick="abonnement.reload(true)"
+          >
+            update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- delete Modal -->
+  <div
+    class="modal fade"
+    id="deleteModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="deleteModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">confirmation</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">confirm delete ?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            no
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="delete(abonnement.id)"
+          >
+            yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
