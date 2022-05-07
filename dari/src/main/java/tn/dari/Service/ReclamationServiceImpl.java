@@ -1,4 +1,4 @@
-package tn.dari.services;
+package tn.dari.Service;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import tn.dari.entity.Reclamation;
-import tn.dari.entity.User;
-import tn.dari.repository.ReclamationRepository;
+import tn.dari.Model.Reclamation;
+import tn.dari.Model.User;
+import tn.dari.Repository.ReclamationRepository;
 @Service
 
 public class ReclamationServiceImpl implements ReclamationService {

@@ -1,4 +1,4 @@
-package tn.dari.entity;
+package tn.dari.Model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.Set;
 
 
 @Entity

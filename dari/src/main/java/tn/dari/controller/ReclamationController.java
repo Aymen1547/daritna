@@ -1,4 +1,4 @@
-package tn.dari.controller;
+package tn.dari.Controller;
 
 import java.util.List;
 
@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.var;
-import tn.dari.entity.Reclamation;
-import tn.dari.services.ReclamationServiceImpl;
+import tn.dari.Model.Reclamation;
+import tn.dari.Service.ReclamationServiceImpl;
 
 @RestController
 

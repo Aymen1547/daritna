@@ -1,10 +1,10 @@
-package tn.dari.controller;
+package tn.dari.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.dari.entity.Location;
-import tn.dari.services.LocationServiceImpl;
+import tn.dari.Model.Location;
+import tn.dari.Service.LocationServiceImpl;
 
 import java.util.List;
 

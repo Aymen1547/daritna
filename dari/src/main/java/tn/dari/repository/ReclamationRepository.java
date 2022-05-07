@@ -1,9 +1,8 @@
-package tn.dari.repository;
+package tn.dari.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import tn.dari.entity.Reclamation;
+import tn.dari.Model.Reclamation;
 
 public interface ReclamationRepository extends JpaRepository<Reclamation, Long> {
 }

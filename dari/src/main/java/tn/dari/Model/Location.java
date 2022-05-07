@@ -1,25 +1,14 @@
-package tn.dari.entity;
+package tn.dari.Model;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -51,6 +40,7 @@ public class Location implements Serializable {
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "location")
     private Set<Reclamation> reclamation;
     @ManyToOne
+    //@JoinColumn (nullable = false)
     private User us;
 
     public Location() {

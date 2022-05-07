@@ -1,7 +1,7 @@
-package tn.dari.services;
+package tn.dari.Service;
 
 import java.util.List;
-import tn.dari.entity.Reclamation;
+import tn.dari.Model.Reclamation;
 
 public interface ReclamationService {
     public List<Reclamation> GetAllReclamations();

@@ -1,7 +1,6 @@
-package tn.dari.services;
+package tn.dari.Service;
 
-import org.springframework.http.ResponseEntity;
-import tn.dari.entity.Location;
+import tn.dari.Model.Location;
 import java.util.List;
 
 public interface LocationService  {
