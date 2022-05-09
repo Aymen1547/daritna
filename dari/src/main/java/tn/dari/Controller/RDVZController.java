@@ -18,8 +18,8 @@ import tn.dari.Model.RDVEntity;
 import tn.dari.Service.RDVServiceImp;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
-public class RDVController {
+@RequestMapping("/api/v1")
+public class RDVZController {
 	@Autowired
 	RDVServiceImp AppointmentService;
 	

@@ -79,11 +79,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User register(String firstName, String lastName, String username, String email) throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
+    public User register(String firstName, String lastName, String username, String email, String password,String role) throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
         validateNewUsernameAndEmail(EMPTY, username, email);
         User user = new User();
         user.setUserId(generateUserId());
-        String password = generatePassword();
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUsername(username);
@@ -92,8 +91,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setPassword(encodePassword(password));
         user.setActive(true);
         user.setNotLocked(true);
-        user.setRole(ROLE_USER.name());
-        user.setAuthorities(ROLE_USER.getAuthorities());
+        user.setRole(getRoleEnumName(role).name());
+        user.setAuthorities(getRoleEnumName(role).getAuthorities());
         user.setProfileImageUrl(getTemporaryProfileImageUrl(username));
         userRepository.save(user);
         LOGGER.info("New user password: " + password);
@@ -125,12 +124,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User updateUser(String currentUsername, String newFirstName, String newLastName, String newUsername, String newEmail, String role, boolean isNonLocked, boolean isActive, MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException {
+    public User updateUser(String currentUsername, String newFirstName, String newLastName, String newUsername, String newEmail, String password, String role, boolean isNonLocked, boolean isActive, MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException {
         User currentUser = validateNewUsernameAndEmail(currentUsername, newUsername, newEmail);
         currentUser.setFirstName(newFirstName);
         currentUser.setLastName(newLastName);
         currentUser.setUsername(newUsername);
         currentUser.setEmail(newEmail);
+        System.out.println(password);
+        if(!password.isEmpty()){
+            System.out.println(password);
+            currentUser.setPassword(encodePassword(password));
+        }
         currentUser.setActive(isActive);
         currentUser.setNotLocked(isNonLocked);
         currentUser.setRole(getRoleEnumName(role).name());

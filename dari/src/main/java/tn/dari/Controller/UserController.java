@@ -57,7 +57,7 @@ public class UserController extends ExceptionHandling {
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
-        User newUser = userService.register(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail());
+        User newUser = userService.register(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail(),user.getPassword(),user.getRole());
         return new ResponseEntity<>(newUser, OK);
     }
 
@@ -80,11 +80,12 @@ public class UserController extends ExceptionHandling {
                                        @RequestParam("lastName") String lastName,
                                        @RequestParam("username") String username,
                                        @RequestParam("email") String email,
+                                       @RequestParam("password") String password,
                                        @RequestParam("role") String role,
                                        @RequestParam("isActive") String isActive,
                                        @RequestParam("isNonLocked") String isNonLocked,
                                        @RequestParam(value = "profileImage", required = false) MultipartFile profileImage) throws UserNotFoundException, UsernameExistException, EmailExistException, IOException, NotAnImageFileException {
-        User updatedUser = userService.updateUser(currentUsername, firstName, lastName, username,email, role, Boolean.parseBoolean(isNonLocked), Boolean.parseBoolean(isActive), profileImage);
+        User updatedUser = userService.updateUser(currentUsername, firstName, lastName, username,email, password, role, Boolean.parseBoolean(isNonLocked), Boolean.parseBoolean(isActive), profileImage);
         return new ResponseEntity<>(updatedUser, OK);
     }
 
