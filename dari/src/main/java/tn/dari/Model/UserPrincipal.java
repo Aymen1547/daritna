@@ -50,5 +50,10 @@ public class UserPrincipal implements UserDetails {
     public boolean isEnabled() {
         return this.user.isActive();
     }
+
+    public User getUser() {
+        return user;
+    }
+
 }
 

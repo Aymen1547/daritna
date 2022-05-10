@@ -13,6 +13,7 @@ import tn.dari.Model.cart.CartItem;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -188,11 +189,39 @@ public class User implements Serializable {
         isNotLocked = notLocked;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", profileImageUrl='" + profileImageUrl + '\'' +
+                ", lastLoginDate=" + lastLoginDate +
+                ", lastLoginDateDisplay=" + lastLoginDateDisplay +
+                ", joinDate=" + joinDate +
+                ", role='" + role + '\'' +
+                ", authorities=" + Arrays.toString(authorities) +
+                ", isActive=" + isActive +
+                ", isNotLocked=" + isNotLocked +
+                ", cartItems=" + cartItems +
+                '}';
+    }
 
     //
     @OneToMany(mappedBy = "pk.user", cascade = CascadeType.ALL)
     private List<CartItem> cartItems = new ArrayList<>();
+
+
     public List<CartItem> getCartItems() {
         return cartItems;
     }
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
+
+
 }

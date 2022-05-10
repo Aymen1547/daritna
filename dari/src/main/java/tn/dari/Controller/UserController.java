@@ -1,8 +1,12 @@
 package tn.dari.Controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import tn.dari.Model.*;
 import tn.dari.Exception.ExceptionHandling;
 import tn.dari.Exception.domain.*;
+import tn.dari.Repository.UserRepository;
 import tn.dari.Service.UserService;
 import tn.dari.Utility.JWTTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -38,6 +43,8 @@ public class UserController extends ExceptionHandling {
     private AuthenticationManager authenticationManager;
     private UserService userService;
     private JWTTokenProvider jwtTokenProvider;
+    @Autowired
+    private UserRepository repo;
 
     @Autowired
     public UserController(AuthenticationManager authenticationManager, UserService userService, JWTTokenProvider jwtTokenProvider) {
@@ -153,4 +160,26 @@ public class UserController extends ExceptionHandling {
     private void authenticate(String username, String password) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
+
+    @RequestMapping(value = "/getuser", method = RequestMethod.GET)
+    public ResponseEntity<User> getCurrentUser (HttpServletRequest request)  {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = repo.findUserByUsername(((UserPrincipal) principal).getUsername());
+        return ResponseEntity.ok(user);
+    }
+
+  /*  CustomUserDetail myUserDetails = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Integer userId=myUserDetails.getUser().getUserId();*/ //Fetch the custom property in User class
+
+/*    @RequestMapping(value = "/myusername", method = RequestMethod.GET)
+    @ResponseBody
+    public String getUsername(HttpServletRequest req) {
+        return req.getUserPrincipal().getName();
+    }
+
+    @RequestMapping(value = "/username", method = RequestMethod.GET)
+    @ResponseBody
+    public String currentUserName(Authentication authentication) {
+        return authentication.getName();
+    }*/
 }
