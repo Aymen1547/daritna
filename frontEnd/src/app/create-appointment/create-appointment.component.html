@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Create Appointment </h3>
+    <form (ngSubmit) = "onSubmit()">
+    
+        <div class="form-group">
+            <label> title</label>
+            <input type="text" class ="form-control" id = "title"
+                [(ngModel)] = "appointments.title" name = "title">
+        </div>
+    
+        <div class="form-group">
+            <label> visibility</label>
+            <input type="text" class ="form-control" id = "visibility"
+                [(ngModel)] = "appointments.visibility" name = "visibility">
+        </div>
+    
+        <div class="form-group">
+            <label> heure</label>
+            <input type="text" class ="form-control" id = "heure"
+                [(ngModel)] = "appointments.heure" name = "heure">
+        </div>
+
+        <div class="form-group">
+            <label> attendance</label>
+            <input type="text" class ="form-control" id = "attendance"
+                [(ngModel)] = "appointments.attendance" name = "attendance">
+        </div>
+
+        <div class="form-group">
+            <label> state</label>
+            <input type="text" class ="form-control" id = "state"
+                [(ngModel)] = "appointments.state" name = "state">
+        </div>
+    
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div>

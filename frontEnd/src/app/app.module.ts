@@ -33,6 +33,9 @@ import { BankComponent } from './components/bank/bank.component';
 import { CreateBanksComponent } from './components/bank/create-banks/create-banks.component';
 import { UpdateBanksComponent } from './components/bank/update-banks/update-banks.component';
 import { SimulationComponent } from './components/simulation/simulation.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { SimulationComponent } from './components/simulation/simulation.componen
     SimulationComponent,
     CreateBanksComponent,
     UpdateBanksComponent,
-
+    AppointmentListComponent,
+    CreateAppointmentComponent,
    
   ],
   imports: [
