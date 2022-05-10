@@ -30,12 +30,9 @@ export class CartComponent implements OnInit {
         //     return
         // }
 
-        this.usersService.getUserByToken().subscribe((user : User) => {
-            this.user = user;
-            this.getItems()
-        }, (error : ErrorEvent) => {
-            console.log(error)
-        })
+            this.user = this.usersService.getUserFromLocalCache();
+            this.getItems();
+ 
     }
 
     getItems () {

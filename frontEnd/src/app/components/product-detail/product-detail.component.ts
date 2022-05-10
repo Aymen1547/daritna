@@ -27,33 +27,34 @@ export class ProductDetailComponent implements OnInit {
     ngOnInit(): void {
         this.productsService.getProduct(this.route.snapshot.paramMap.get('id')).subscribe((product : Product) => {
             this.product = product
+           console.log(this.product);
+
             this.product.imageUrl = product.image ? 'data:image/jpeg;base64,' + product.image :
             "../../../assets/static/images/product-placeholder.png";
         }, (error: ErrorEvent) => {
             console.log(this.product);
         })
 
-        this.usersService.getUserByToken().subscribe((user : User) => {
-            this.user = user
-            console.log(this.user.userId);
-
+            this.user = this.usersService.getUserFromLocalCache();
+            console.log(this.product);
             this.getCartItem()
-        }, (error : ErrorEvent) => {
-            console.log(error)
-        })
+      
     }
 
     addToCart () {
-        this.cartItemsService.addToUserCart(this.user.userId.toString(), this.product.id.toString()).subscribe(res => {
+        this.cartItemsService.addToUserCart(this.user.userId, this.product.id.toString()).subscribe(res => {
             this.getCartItem()
         })
     }
 
     getCartItem () {
-        this.cartItemsService.getCartItem(this.user.userId.toString(), this.product.id.toString()).subscribe(res => {
+        console.log(this.user.userId);
+        console.log(this.product);
+        this.cartItemsService.getCartItem(this.user.userId, this.product.id).subscribe(res => {
             this.isProductInCart = true
         }, (error : ErrorEvent) => {
             this.isProductInCart = false
         })
+
     }
 }

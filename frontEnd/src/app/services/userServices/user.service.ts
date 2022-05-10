@@ -50,6 +50,11 @@ export class UserService {
 
   }
 
+  public getUserFromLocalCache(): User {
+     return JSON.parse(localStorage.getItem('user')!);
+
+}
+
   
   public createUserFormDate(loggedInUsername: string, user: User, profileImage: File): FormData {
     const formData = new FormData();
@@ -80,14 +85,6 @@ export class UserService {
     return formData;
   }
 
-  getUserByToken () : Observable<User> {
-    return this.http.get<User>(`${environment.apiUrl}/user/getuser`, {
-        headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + localStorage.getItem('token'),
-          'Content-Type': 'application/json'
-        })
-    });
-}
 
 
 }

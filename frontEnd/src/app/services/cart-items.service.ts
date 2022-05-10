@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CartItem } from '../models/CartItem';
+import { Product } from '../models/Product';
 import { User } from '../models/User';
 
 @Injectable({
@@ -11,12 +12,12 @@ import { User } from '../models/User';
 export class CartItemsService {
     constructor(private http : HttpClient) { }
 
-    getCartItem (userId : string, productId : string) : Observable<CartItem> {
+    getCartItem (userId : string, productId : number) : Observable<CartItem> {
         return this.http.get<CartItem>(`${environment.apiUrl}/api/cart-items/${userId}/${productId}`)
     }
 
-    addToUserCart (userId : string, productId : string) : Observable<User> {
-        return this.http.post<User>(`${environment.apiUrl}/api/users/${userId}/cart/add/${productId}`, {
+    addToUserCart (userId : string, productId : string) : Observable<Product> {
+        return this.http.post<Product>(`${environment.apiUrl}/api/users/${userId}/cart/add/${productId}`, {
         })
     }
 
