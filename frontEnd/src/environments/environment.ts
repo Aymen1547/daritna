@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   stripe: 'pk_test_51IS3xuEW0KlR6HuIdP0uFLNeo1qXshC7Bvd0XYj1gU4lCYkVzjHslrTsxNHhOEDLy5hWmPSkihBWHerpBZ0PGnoY00eb6EVm3z',
   serverUrl: 'http://localhost:8080/apii',
-  apiUrl:"http://localhost:8080"
+  apiUrl:"http://localhost:8080",
+  apiServerUrl:'http://localhost:8080'
 };
 
 /*

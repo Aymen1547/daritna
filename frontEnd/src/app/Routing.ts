@@ -8,6 +8,11 @@ import { AuthenticationGuard } from './guard/authentication.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { CancelComponent } from './components/cancel/cancel.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import {BankComponent} from "./components/bank/bank.component";
+
+import {CreateBanksComponent} from "./components/bank/create-banks/create-banks.component";
+import {UpdateBanksComponent} from "./components/bank/update-banks/update-banks.component";
+import {SimulationComponent} from "./components/simulation/simulation.component";
 
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -26,6 +31,10 @@ export const routes: Routes = [
     {path: 'checkout',component: CheckoutComponent},
     {path: 'cancel', component: CancelComponent },
     {path: 'success', component: SuccessComponent },
+  {path: 'banks', component: BankComponent},
+  {path: 'create-banks', component: CreateBanksComponent},
+  {path: 'update-banks/:id', component: UpdateBanksComponent},
+  {path: 'simulation', component: SimulationComponent},
 ];
 
 @NgModule({

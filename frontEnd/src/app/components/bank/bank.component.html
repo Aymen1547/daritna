@@ -1,0 +1,20 @@
+<table class = "table table-striped">
+  <thead>
+  <tr>
+    <th> Name Bank </th>
+    <th> Taux </th>
+    <th> Action </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let bankCredit of bank" >
+    <td> {{ bankCredit.nameBank }} </td>
+    <td> {{ bankCredit.interestRate }} </td>
+    <td>
+      <button (click) = "updatebank(bankCredit.bankId)" class = "btn btn-info"> Update</button>
+      <button (click) = "deletebank(bankCredit.bankId)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+    </td>
+
+  </tr>
+  </tbody>
+</table>

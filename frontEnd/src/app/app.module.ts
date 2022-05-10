@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from './Routing';
 import { AppComponent } from './app.component';
@@ -21,13 +21,18 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RouterModule } from '@angular/router';
 import { SuccessComponent } from './components/success/success.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CancelComponent } from './components/cancel/cancel.component';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { BankComponent } from './components/bank/bank.component';
+import { CreateBanksComponent } from './components/bank/create-banks/create-banks.component';
+import { UpdateBanksComponent } from './components/bank/update-banks/update-banks.component';
+import { SimulationComponent } from './components/simulation/simulation.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CancelComponent,
     SuccessComponent,
     CartComponent,
-    
+    BankComponent,
+    SimulationComponent,
+    CreateBanksComponent,
+    UpdateBanksComponent,
+
+   
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -54,10 +64,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotificationModule,
     BrowserModule,
     FontAwesomeModule,
-    FormsModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
