@@ -19,6 +19,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { SuccessComponent } from './components/success/success.component';
 import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
 import { CreateAppointmentComponent } from './components/create-appointment/create-appointment.component';
+import { LocationDashboardComponent } from './components/locationsManagement/location-dashboard/location-dashboard.component';
+import { ReclamationDashboardComponent } from './components/reclamationsManagement/reclamation-dashboard/reclamation-dashboard.component';
 
 export const routes: Routes = [
     { path: '', pathMatch:'full', redirectTo:'home' },
@@ -39,6 +41,8 @@ export const routes: Routes = [
   {path: 'simulation', component: SimulationComponent},
   {path: 'appointments', component: AppointmentListComponent},
   {path: 'create-appointment', component: CreateAppointmentComponent},
+  { path: 'locations', component: LocationDashboardComponent},
+  { path: 'reclamations', component: ReclamationDashboardComponent}
 ];
 
 @NgModule({
