@@ -33,9 +33,8 @@ import { BankComponent } from './components/bank/bank.component';
 import { CreateBanksComponent } from './components/bank/create-banks/create-banks.component';
 import { UpdateBanksComponent } from './components/bank/update-banks/update-banks.component';
 import { SimulationComponent } from './components/simulation/simulation.component';
-import { AppointmentListComponent } from './appointment-list/appointment-list.component';
-import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
-
+import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
+import { CreateAppointmentComponent } from './components/create-appointment/create-appointment.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +57,7 @@ import { CreateAppointmentComponent } from './create-appointment/create-appointm
     UpdateBanksComponent,
     AppointmentListComponent,
     CreateAppointmentComponent,
+
    
   ],
   imports: [

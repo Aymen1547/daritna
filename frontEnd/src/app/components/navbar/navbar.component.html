@@ -9,8 +9,8 @@
             <li class="active"><a href="/">Home</a></li>
             <li><a href="nav-link" routerLink="shop">Shop</a></li>
             <li *ngIf="isAuthenticated()"><a href="nav-link" routerLink="cart">Cart</a></li>
-            <li><a href="nav-link" routerLink="simulation">Simulation</a></li>
-            <li><a href="about.html">About</a></li>
+            <li *ngIf="isAuthenticated()"><a href="nav-link" routerLink="simulation">Simulation</a></li>
+            <li *ngIf="isAuthenticated()"><a  routerLink="create-appointment">Add appointment</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li>
                 <li *ngIf="!isAuthenticated()"><a href="/login" style="font-weight: bold;">login</a></li>

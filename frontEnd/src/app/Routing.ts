@@ -17,6 +17,8 @@ import {SimulationComponent} from "./components/simulation/simulation.component"
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { SuccessComponent } from './components/success/success.component';
+import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
+import { CreateAppointmentComponent } from './components/create-appointment/create-appointment.component';
 
 export const routes: Routes = [
     { path: '', pathMatch:'full', redirectTo:'home' },
@@ -35,6 +37,8 @@ export const routes: Routes = [
   {path: 'create-banks', component: CreateBanksComponent},
   {path: 'update-banks/:id', component: UpdateBanksComponent},
   {path: 'simulation', component: SimulationComponent},
+  {path: 'appointments', component: AppointmentListComponent},
+  {path: 'create-appointment', component: CreateAppointmentComponent},
 ];
 
 @NgModule({
