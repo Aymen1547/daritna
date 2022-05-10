@@ -11,6 +11,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductListComponent implements OnInit {
     public term : string
     public products : Product[]
+    router: any;
 
     constructor(router : Router, route : ActivatedRoute, private productsService : ProductsService) { 
         this.term = route.snapshot.paramMap.get('term') || ""
@@ -27,5 +28,9 @@ export class ProductListComponent implements OnInit {
             }
         }, (error: ErrorEvent) => {
         })
+    }
+
+    public search() {
+        this.router.navigate(["/shop", this.term]).then(() => window.location.reload())
     }
 }

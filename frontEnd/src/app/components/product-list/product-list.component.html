@@ -9,6 +9,17 @@
             height: 250px;
         }
     </style>
+     <form class="form-inline" (submit)="search()">
+        <input 
+            class="form-control bg-transparent text-success" 
+            type="search" 
+            placeholder="Search products" 
+            aria-label="Search"
+            [(ngModel)]="term"
+            name="term"
+        >
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     <h1 class="mx-auto text-center" style="margin-bottom: 6rem;">Our Products</h1>
     <div class="d-flex" style="justify-content: center; flex-wrap: wrap;">
         <div *ngFor="let product of products; let i = index">
