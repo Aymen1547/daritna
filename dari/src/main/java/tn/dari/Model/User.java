@@ -5,10 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import tn.dari.Model.cart.CartItem;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class User implements Serializable {
@@ -184,7 +190,6 @@ public class User implements Serializable {
 
 
     //
-    @JsonManagedReference
     @OneToMany(mappedBy = "pk.user", cascade = CascadeType.ALL)
     private List<CartItem> cartItems = new ArrayList<>();
     public List<CartItem> getCartItems() {

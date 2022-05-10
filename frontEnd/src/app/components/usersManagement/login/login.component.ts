@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeaderType } from 'src/app/enum/header-type';
 import { NotificationType } from 'src/app/enum/notification-type';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/User';
 import { AuthenticationService } from 'src/app/services/userServices/authentication.service';
 import { NotificationService } from 'src/app/services/userServices/notification.service';
 

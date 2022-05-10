@@ -7,7 +7,7 @@ import { NotificationType } from 'src/app/enum/notification-type';
 import { Role } from 'src/app/enum/role';
 import { CustomHttpRespone } from 'src/app/models/custom-http-response';
 import { FileUploadStatus } from 'src/app/models/file-upload.status';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/User';
 import { AuthenticationService } from 'src/app/services/userServices/authentication.service';
 import { NotificationService } from 'src/app/services/userServices/notification.service';
 import { UserService } from 'src/app/services/userServices/user.service';

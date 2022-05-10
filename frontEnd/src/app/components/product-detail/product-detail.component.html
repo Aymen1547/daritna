@@ -27,7 +27,6 @@
                 <button 
                     *ngIf="!isProductInCart" 
                     class="btn btn-success" 
-                    [disabled]="!user" 
                     (click)="addToCart()"
                 >Add to cart</button>
                 <button *ngIf="isProductInCart" class="btn btn-secondary" disabled>In cart</button>

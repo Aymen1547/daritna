@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(private authService : AuthenticationService,private router:Router) { }
+  public term : string
 
   ngOnInit(): void {
   }
@@ -33,4 +34,8 @@ export class NavbarComponent implements OnInit {
   sendNotification(SUCCESS: any, arg1: string) {
     throw new Error('Method not implemented.');
   }
+
+  public search() {
+    this.router.navigate(["/shop", this.term]).then(() => window.location.reload())
+}
 }

@@ -1,5 +1,6 @@
 package tn.dari.Controller;
 
+import tn.dari.Exception.domain.UserNotFoundException;
 import tn.dari.Model.Product;
 import tn.dari.Model.User;
 import tn.dari.Model.cart.CartItem;
@@ -67,14 +68,14 @@ public class APIController {
 //    }
 
     @GetMapping("/users/{id}/cart")
-    public ResponseEntity<List<CartItem>> getUserCart (@PathVariable("id") Long id) {
+    public ResponseEntity<List<CartItem>> getUserCart (@PathVariable("id") Long id) throws UserNotFoundException {
         System.out.println(userService.getUser(id).getCartItems().size());
         return new ResponseEntity<>(userService.getUser(id).getCartItems(), HttpStatus.OK);
     }
 //
     @PostMapping("/users/{id}/cart/add/{productId}")
     public ResponseEntity<User> addToUserCart (@PathVariable("id") Long id,
-                                               @PathVariable("productId") Long productId) {
+                                               @PathVariable("productId") Long productId) throws UserNotFoundException {
         User user = userService.getUser(id);
         Product product = productService.getProduct(productId);
 

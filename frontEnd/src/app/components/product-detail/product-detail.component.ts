@@ -5,7 +5,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { User } from 'src/app/models/User';
 import { CartItemsService } from 'src/app/services/cart-items.service';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/userServices/user.service';
 
 @Component({
   selector: 'app-product-detail',

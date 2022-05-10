@@ -20,7 +20,7 @@ import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './components/cart/cart.component';
-//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -44,7 +44,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     NotificationModule,
     BrowserModule,
- //   FontAwesomeModule,
+    FontAwesomeModule,
     FormsModule,
   ],
   providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,

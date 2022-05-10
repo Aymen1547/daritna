@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/User';
 import { CustomHttpRespone } from 'src/app/models/custom-http-response';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
+ 
   private host = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
@@ -78,5 +79,15 @@ export class UserService {
     formData.append('isNonLocked', JSON.stringify(user.notLocked));
     return formData;
   }
+
+  getUserByToken () : Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/user`, {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + localStorage.getItem('token'),
+          'Content-Type': 'application/json'
+        })
+    });
+}
+
 
 }

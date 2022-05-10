@@ -4,7 +4,7 @@ import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { CartItem } from 'src/app/models/CartItem';
 import { User } from 'src/app/models/User';
 import { CartItemsService } from 'src/app/services/cart-items.service';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/userServices/user.service';
 
 @Component({
   selector: 'app-cart',

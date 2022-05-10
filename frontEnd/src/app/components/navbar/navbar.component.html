@@ -4,9 +4,12 @@
         <a href="/home" class="probootstrap-logo">dari<span>.tn</span></a>
 
         <nav role="navigation" class="probootstrap-nav hidden-xs">
+          
           <ul class="probootstrap-main-nav">
+
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="properties.html">Properties</a></li>
+            <li><a href="nav-link" routerLink="shop">Shop</a></li>
+            <li *ngIf="isAuthenticated()"><a href="nav-link" routerLink="cart">Cart</a></li>
             <li><a href="agents.html">Agents</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -19,4 +22,15 @@
     
         </nav>
     </div>
+    <form class="form-inline my-2 my-lg-0 d-flex" (submit)="search()">
+      <input 
+          class="form-control mr-sm-2 bg-transparent text-success" 
+          type="search" 
+          placeholder="Search products" 
+          aria-label="Search"
+          [(ngModel)]="term"
+          name="term"
+      >
+      <button class="btn btn-outline-success my-2 my-sm-0 mx-3" type="submit">Search</button>
+    </form>
   </header>
