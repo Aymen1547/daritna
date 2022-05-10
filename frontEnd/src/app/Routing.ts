@@ -6,8 +6,12 @@ import { RegisterComponent } from './components/usersManagement/register/registe
 import { UserComponent } from './components/usersManagement/user/user.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { CartComponent } from './components/cart/cart.component';
+import { CancelComponent } from './components/cancel/cancel.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { SuccessComponent } from './components/success/success.component';
 
 export const routes: Routes = [
     { path: '', pathMatch:'full', redirectTo:'home' },
@@ -18,8 +22,10 @@ export const routes: Routes = [
     {path: 'shop', component: ProductListComponent},
     {path: 'shop/:term', component: ProductListComponent},
     {path: 'shop/products/:id', component: ProductDetailComponent},
-    {path: 'cart', component: CartComponent}
-    
+    {path: 'cart', component: CartComponent},
+    {path: 'checkout',component: CheckoutComponent},
+    {path: 'cancel', component: CancelComponent },
+    {path: 'success', component: SuccessComponent },
 ];
 
 @NgModule({

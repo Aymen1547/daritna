@@ -93,6 +93,19 @@
 			<artifactId>guava</artifactId>
 			<version>28.1-jre</version>
 		</dependency>
+
+		<!-- gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<!-- stripe -->
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>20.41.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

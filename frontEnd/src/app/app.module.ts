@@ -22,6 +22,12 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CartComponent } from './components/cart/cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
+import { SuccessComponent } from './components/success/success.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CancelComponent } from './components/cancel/cancel.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { RouterModule } from '@angular/router';
     AdminBarComponent,
     ProductListComponent,
     ProductDetailComponent,
-    CartComponent
+    CheckoutComponent,
+    CancelComponent,
+    SuccessComponent,
+    CartComponent,
     
   ],
   imports: [
@@ -46,6 +55,9 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     FontAwesomeModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
