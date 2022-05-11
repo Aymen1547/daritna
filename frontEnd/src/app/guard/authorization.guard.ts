@@ -16,7 +16,7 @@ export class AuthorizationGuard implements CanActivate {
 
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const hasAuthority = this.user?.role.includes("USER_ADMIN");
+      const hasAuthority = this.user?.role.includes("ROLE_ADMIN");
       if (!hasAuthority) {
         this.router.navigateByUrl('/home');
         window.alert("You are not allowed to be here!!");
