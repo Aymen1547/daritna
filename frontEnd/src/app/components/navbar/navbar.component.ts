@@ -35,7 +35,5 @@ export class NavbarComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  public search() {
-    this.router.navigate(["/shop", this.term]).then(() => window.location.reload())
-}
+
 }

@@ -21,6 +21,7 @@ import { AppointmentListComponent } from './components/appointment-list/appointm
 import { CreateAppointmentComponent } from './components/create-appointment/create-appointment.component';
 import { LocationDashboardComponent } from './components/locationsManagement/location-dashboard/location-dashboard.component';
 import { ReclamationDashboardComponent } from './components/reclamationsManagement/reclamation-dashboard/reclamation-dashboard.component';
+import { AuthorizationGuard } from './guard/authorization.guard';
 
 export const routes: Routes = [
     { path: '', pathMatch:'full', redirectTo:'home' },
@@ -28,21 +29,21 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'user/management', component: UserComponent, canActivate: [AuthenticationGuard] },
     { path: 'home', component: HomeComponent },
-    {path: 'shop', component: ProductListComponent},
-    {path: 'shop/:term', component: ProductListComponent},
-    {path: 'shop/products/:id', component: ProductDetailComponent},
-    {path: 'cart', component: CartComponent},
-    {path: 'checkout',component: CheckoutComponent},
+    {path: 'shop', component: ProductListComponent, canActivate: [AuthenticationGuard]},
+    {path: 'shop/:term', component: ProductListComponent, canActivate: [AuthenticationGuard]},
+    {path: 'shop/products/:id', component: ProductDetailComponent, canActivate: [AuthenticationGuard]},
+    {path: 'cart', component: CartComponent, canActivate: [AuthenticationGuard]},
+    {path: 'checkout',component: CheckoutComponent, canActivate: [AuthenticationGuard]},
     {path: 'cancel', component: CancelComponent },
     {path: 'success', component: SuccessComponent },
-  {path: 'banks', component: BankComponent},
-  {path: 'create-banks', component: CreateBanksComponent},
-  {path: 'update-banks/:id', component: UpdateBanksComponent},
-  {path: 'simulation', component: SimulationComponent},
-  {path: 'appointments', component: AppointmentListComponent},
-  {path: 'create-appointment', component: CreateAppointmentComponent},
-  { path: 'locations', component: LocationDashboardComponent},
-  { path: 'reclamations', component: ReclamationDashboardComponent}
+  {path: 'banks', component: BankComponent, canActivate: [AuthenticationGuard, AuthorizationGuard],}, 
+  {path: 'create-banks', component: CreateBanksComponent, canActivate: [AuthenticationGuard, AuthorizationGuard],}, 
+  {path: 'update-banks/:id', component: UpdateBanksComponent, canActivate: [AuthenticationGuard, AuthorizationGuard],}, 
+  {path: 'simulation', component: SimulationComponent, canActivate: [AuthenticationGuard]}, 
+  {path: 'appointments', component: AppointmentListComponent, canActivate: [AuthenticationGuard, AuthorizationGuard]}, 
+  {path: 'create-appointment', component: CreateAppointmentComponent, canActivate: [AuthenticationGuard]},
+  { path: 'locations', component: LocationDashboardComponent, canActivate: [AuthenticationGuard, AuthorizationGuard],},
+  { path: 'reclamations', component: ReclamationDashboardComponent, canActivate: [AuthenticationGuard, AuthorizationGuard],},
 ];
 
 @NgModule({
